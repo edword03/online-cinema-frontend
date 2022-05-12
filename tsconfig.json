@@ -17,13 +17,14 @@
     "baseUrl": "./app/",
     "paths": {
       "@/components/*": ["components/*"],
+      "@/ui/*": ["components/ui/*"],
+      
       "@/assets/*": ["assets/*"],
       "@/store/*": ["store/*"],
       "@/utils/*": ["utils/*"],
       "@/config/*": ["config/*"],
       "@/services/*": ["services/*"],
-
-
+      "@/hooks/*": ["hooks/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
