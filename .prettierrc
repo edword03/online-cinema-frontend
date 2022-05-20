@@ -1,24 +1,28 @@
 {
-  "trailingComma": "es5",
-  "tabWidth": 2,
-  "useTabs": true,
+	"trailingComma": "es5",
+	"tabWidth": 2,
+	"useTabs": true,
 
-  "semi": true,
-  "singleQuote": true,
-  "import": [
-    "<THIRD_PARTY_MODULES>",
-    "^@/components/(.*)$",
-    "^@/ui/(.*)$",
-    "^@/hooks/(.*)$",
-    "^@/services/(.*)$",
-    "^@/assets/(.*)$",
-    "^@/utils/(.*)$",
-    "^@/config/(.*)$",
-    "^@/store/(.*)$",
-    "^../(.*)",
-    "^./(.*)",
-    "^(.scss)$"
-  ],
-  "importOrderSeparation": true,
-  "importOrderSortSpecifies": true
+	"semi": true,
+	"singleQuote": true,
+	"importOrder": [
+		"<THIRD_PARTY_MODULES>",
+		"^@/screens/(.*)$",
+		"^@/components/(.*)$",
+		"^@/ui/(.*)$",
+		"^@/hooks/(.*)$",
+		"^@/shared/(.*)$",
+		"^@/services/(.*)$",
+		"^@/assets/(.*)$",
+		"^@/utils/(.*)$",
+		"^@/configs/(.*)$",
+		"^@/store/(.*)$",
+		"^@/constants/(.*)$",
+		"^@/types/(.*)$",
+		"^../(.*)",
+		"^./(.*)",
+		"(.scss)$"
+	],
+	"importOrderSeparation": true,
+	"importOrderSortSpecifiers": true
 }
