@@ -2,8 +2,8 @@ import { FC } from 'react';
 
 import { MenuType } from '@/types/menu';
 
-import { MenuItem } from '../MenuItem';
-import styles from '../Menu.module.scss'
+import { MenuItem } from './MenuItem';
+import styles from './Menu.module.scss'
 
 export const Menu: FC<{ menu: MenuType }> = ({ menu: { menuList, title } }) => {
 	return (

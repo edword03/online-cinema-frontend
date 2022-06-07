@@ -18,7 +18,7 @@
     "paths": {
       "@/components/*": ["components/*"],
       "@/ui/*": ["components/ui/*"],
-      
+      "@/models/*": ["models/*"],
       "@/assets/*": ["assets/*"],
       "@/store/*": ["store/*"],
       "@/utils/*": ["utils/*"],
@@ -27,6 +27,7 @@
       "@/hooks/*": ["hooks/*"],
       "@/constants/*": ["constants/*"],
       "@/types/*": ["types/*"],
+      "@/providers/*": ["providers/*"]
 
     }
   },
