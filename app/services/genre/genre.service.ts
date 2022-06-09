@@ -1,9 +1,16 @@
-import axios from "axios"
-import { getGenresUrl } from "@/config/api.config"
-import { GenreModel } from "@/models/movie"
+import axios from 'axios';
+
+import { getGenresUrl } from '@/config/api.config';
+import { GenreModel } from '@/models/movie';
 
 export const genreService = {
-  async getPopularGenres() {
-    return axios.get<GenreModel[]>(getGenresUrl('popular'))
-  }
-}
+	async getAll(searchTerm?: string) {
+		return await axios.get<GenreModel[]>(getGenresUrl(''), {
+			params: searchTerm
+				? {
+						searchTerm,
+				  }
+				: {},
+		});
+	},
+};
