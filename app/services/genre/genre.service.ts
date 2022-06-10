@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import { getGenresUrl } from '@/config/api.config';
-import { GenreModel } from '@/models/movie';
+import { GenreModel } from '@/models/genre';
 
 export const genreService = {
 	async getAll(searchTerm?: string) {
