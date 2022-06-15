@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,OAAO,CAAC;EACN,MAAM,CAAN,gFAAM;CAiBP;;AAlBD,AAGE,OAHK,GAGJ,GAAG,CAAC;EACH,MAAM,CAAN,6CAAM;CACP;;AALH,AAOE,OAPK,GAOJ,KAAK,CAAC;EACL,MAAM,CAAN,6EAAM;CACP;;AATH,AAWE,OAXK,AAWJ,aAAa,CAAC;EACb,MAAM,CAAN,eAAM;CAKP;;AAjBH,AAcI,OAdG,AAWJ,aAAa,GAGX,GAAG,CAAC;EACH,MAAM,CAAN,aAAM;CACP",
-    "sources": [
-        "SearchField.module.scss"
-    ],
-    "names": [],
-    "file": "SearchField.module.css"
-}
