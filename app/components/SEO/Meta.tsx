@@ -1,9 +1,11 @@
 import Head from 'next/head';
-import { FC } from 'react';
 import { useRouter } from 'next/router';
+import { FC } from 'react';
 
 import logoImage from '@/assets/images/logo.svg';
+
 import { clearText } from '@/utils/string/clearText';
+
 import { concatTitle, siteName } from '@/config/seo.config';
 
 interface MetaProps {
@@ -21,7 +23,7 @@ export const Meta: FC<MetaProps> = ({
 }) => {
 	const { asPath } = useRouter();
 
-	const currentUrl = `${process.env.App_URL}${asPath}`;
+	const currentUrl = `${process.env.APP_URL}${asPath}`;
 
 	return (
 		<Head>
@@ -37,7 +39,7 @@ export const Meta: FC<MetaProps> = ({
 					<meta property="og:locale" content="en" />
 					<meta property="og:title" content={concatTitle(title)} />
 					<meta property="og:url" content={currentUrl} />
-					<meta property="og:image" content={image || logoImage} />
+					<meta property="og:image" content={image || logoImage.src} />
 					<meta property="og:site_name" content={siteName} />
 					<meta
 						property="og:description"
