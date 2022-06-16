@@ -10,10 +10,10 @@ export const Menu: FC<{ menu: MenuType }> = ({ menu: { menuList, title } }) => {
 		<div className={styles.menu}>
 			<h2 className={styles.title}>{title}</h2>
 			<ul>
-				{menuList.length > 0 ? (
+				{menuList && menuList.length ? (
 					menuList.map((item) => <MenuItem key={item.link} {...item} />)
 				) : (
-					<p>Somthing went wrong</p>
+					<p>Something went wrong</p>
 				)}
 			</ul>
 		</div>

@@ -16,13 +16,13 @@ export const SearchList: FC<SearchListProps> = ({ movies }) => {
 					<Link href={getMovieUrl(slug)} key={_id}>
 						<a>
 							<Image
-								src={poster || ''}
+								src={`/${poster}`}
 								alt={title}
 								width={50}
 								height={50}
 								draggable={false}
-								objectFit='cover'
-								objectPosition='top'
+								objectFit="cover"
+								objectPosition="top"
 							/>
 							<span>{title}</span>
 						</a>
