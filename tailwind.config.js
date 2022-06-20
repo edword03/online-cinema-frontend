@@ -76,6 +76,8 @@ module.exports = {
 		},
 	},
 	plugins: [
+		require('@tailwindcss/forms'),
+		require('@tailwindcss/aspect-ratio'),
 		plugin(({ addComponents, theme, addUtilities }) => {
 			addComponents({
 				'.btn-primary': {
@@ -105,29 +107,29 @@ module.exports = {
 					color: theme('colors.white'),
 					boxShadow: theme('boxShadow.lg'),
 				},
-			}),
-				addUtilities({
-					'.text-shadow': {
-						textShadow: '1px 1px rgba(0, 0, 0, .4)',
-					},
+			});
+			addUtilities({
+				'.text-shadow': {
+					textShadow: '1px 1px rgba(0, 0, 0, .4)',
+				},
 
-					'.outline-border-none': {
-						outline: 'none',
-						border: 'none',
-					},
+				'.outline-border-none': {
+					outline: 'none',
+					border: 'none',
+				},
 
-					'.flex-center-between': {
-						display: 'flex',
-						alignItems: 'center',
-						justifyContent: 'space-between',
-					},
+				'.flex-center-between': {
+					display: 'flex',
+					alignItems: 'center',
+					justifyContent: 'space-between',
+				},
 
-					'.image-like-bg': {
-						objectPosition: 'center',
-						objectFit: 'cover',
-						pointerEvents: 'none',
-					},
-				});
+				'.image-like-bg': {
+					objectPosition: 'center',
+					objectFit: 'cover',
+					pointerEvents: 'none',
+				},
+			});
 		}),
 	],
 };
