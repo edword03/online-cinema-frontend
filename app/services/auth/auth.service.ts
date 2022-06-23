@@ -39,7 +39,7 @@ export const authService = {
 		localStorage.removeItem('user');
 	},
 
-	async updateAccessToken() {
+	async updateTokens() {
 		const refreshToken = Cookies.get('refreshToken');
 
 		const response = await axios.post(
