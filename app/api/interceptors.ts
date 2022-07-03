@@ -16,13 +16,12 @@ export const instance = axios.create({
 });
 
 instance.interceptors.request.use((config) => {
-	const accessToken = Cookies.get('accessToken');
-
+	const accessToken = Cookies.get('accessToken')
 	if (config.headers && accessToken)
-		config.headers.Authorize = `Bearer ${accessToken}`;
+		config.headers.Authorization = `Bearer ${accessToken}`
 
-	return config;
-});
+	return config
+})
 
 instance.interceptors.response.use(
 	(config) => config,
