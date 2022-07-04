@@ -6,22 +6,22 @@ import { AdminNav } from '@/ui/admin-nav/AdminNav';
 import { AdminHeader } from '@/ui/admin-table/adminHeader/AdminHeader';
 import { AdminTable } from '@/ui/admin-table/adminTable';
 
-import { useUsers } from './useUserList';
+import { useMovies } from './useMoviesList';
 
-export const UserList = () => {
-	const { searchTerm, deleteUser, isLoading, handleSearch, data } = useUsers();
+export const MoviesList = () => {
+	const { searchTerm, deleteMovie, isLoading, handleSearch, data } = useMovies();
 
 	return (
 		<>
-			<Meta title="Users" />
+			<Meta title="Movies" />
 			<AdminNav />
-			<Heading title="Users" />
+			<Heading title="Movies" />
 			<AdminHeader searchTerm={searchTerm} onChange={handleSearch} />
 			<AdminTable
 				isLoading={isLoading}
-				headerItems={['Email', 'Date register']}
+				headerItems={['Title', 'Genres', 'Rating']}
 				tableItems={data || []}
-				removeHandler={deleteUser}
+				removeHandler={deleteMovie}
 			/>
 		</>
 	);

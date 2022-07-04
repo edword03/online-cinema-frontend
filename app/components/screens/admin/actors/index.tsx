@@ -1,15 +1,16 @@
 import React from 'react';
 
 import { Meta } from '@/components/SEO/Meta';
+
 import { Heading } from '@/ui/Heading/Heading';
 import { AdminNav } from '@/ui/admin-nav/AdminNav';
 import { AdminHeader } from '@/ui/admin-table/adminHeader/AdminHeader';
 import { AdminTable } from '@/ui/admin-table/adminTable';
 
-import { useUsers } from './useUserList';
+import { useActors } from './useActorsList';
 
-export const UserList = () => {
-	const { searchTerm, deleteUser, isLoading, handleSearch, data } = useUsers();
+export const ActorsList = () => {
+	const { searchTerm, deleteActor, isLoading, handleSearch, data } = useActors();
 
 	return (
 		<>
@@ -19,9 +20,9 @@ export const UserList = () => {
 			<AdminHeader searchTerm={searchTerm} onChange={handleSearch} />
 			<AdminTable
 				isLoading={isLoading}
-				headerItems={['Email', 'Date register']}
+				headerItems={['Name', 'Count movies']}
 				tableItems={data || []}
-				removeHandler={deleteUser}
+				removeHandler={deleteActor}
 			/>
 		</>
 	);
