@@ -14,6 +14,6 @@ export const userService = {
 	},
 
 	async deleteUser(_id: string) {
-		return await axios.delete<string>(getUsersUrl(`/${_id}`));
+		return await axios.delete<string>(getUsersUrl(`${_id}`));
 	},
 };

@@ -1,4 +1,6 @@
 import axios from 'axios';
+import axiosAuth from '@/api/interceptors';
+
 
 import { getGenresUrl } from '@/config/api.config';
 import { GenreModel } from '@/models/genre';
@@ -13,4 +15,8 @@ export const genreService = {
 				: {},
 		});
 	},
+
+	async deleteGenre(_id: string) {
+		return await axiosAuth.delete<string>(getGenresUrl(_id))
+	}
 };
