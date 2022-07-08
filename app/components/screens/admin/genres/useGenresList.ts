@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import { ChangeEvent, useMemo, useState } from 'react';
 import { useMutation, useQuery } from 'react-query';
 import { toast } from 'react-toastify';
@@ -5,7 +6,6 @@ import { toast } from 'react-toastify';
 import { useDebounce } from '@/hooks/useDebounce';
 
 import { genreService } from '@/services/genre/genre.service';
-import { userService } from '@/services/user/user.service';
 
 import { toastError } from '@/utils/error/toast-error';
 
@@ -17,6 +17,7 @@ export const useGenres = () => {
 	const [searchTerm, setSearchTerm] = useState<string>('');
 
 	const debouncedSearch = useDebounce(searchTerm, 500);
+	const { push } = useRouter();
 
 	const queryData = useQuery(
 		['genres list', debouncedSearch],
@@ -42,7 +43,7 @@ export const useGenres = () => {
 
 	const { mutateAsync: deleteGenre } = useMutation(
 		'delete genre',
-		(genreId: string) => userService.deleteUser(genreId),
+		(genreId: string) => genreService.deleteGenre(genreId),
 		{
 			onError: (error) => {
 				toastError(error);
@@ -54,13 +55,29 @@ export const useGenres = () => {
 		}
 	);
 
+	const { mutateAsync: createAsync } = useMutation(
+		'create genre',
+		() => genreService.create(),
+		{
+			onError: (error) => {
+				toastError(error);
+			},
+			onSuccess: ({ data: _id }) => {
+				toast.success('Genre created was successful');
+				queryData.refetch();
+				push(getAdminUrl(`genre/edit/${_id}`));
+			},
+		}
+	);
+
 	return useMemo(
 		() => ({
 			handleSearch,
 			deleteGenre,
 			...queryData,
 			searchTerm,
+			createAsync,
 		}),
-		[queryData, deleteGenre, searchTerm]
+		[queryData, deleteGenre, searchTerm, createAsync]
 	);
 };
