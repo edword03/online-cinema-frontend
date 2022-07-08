@@ -1,13 +1,9 @@
 import cn from 'classnames';
-import { InputHTMLAttributes, forwardRef } from 'react';
-import { FieldError } from 'react-hook-form';
+import { forwardRef } from 'react';
+
+import { InputProps } from '@/ui/form-field/form.interface';
 
 import styles from './form.module.scss';
-
-type InputProps = InputHTMLAttributes<HTMLInputElement> & {
-	placeholder: string;
-	error?: FieldError;
-};
 
 export const Field = forwardRef<HTMLInputElement, InputProps>(
 	({ placeholder, pattern, error, type = 'text', style, ...props }, ref) => {
