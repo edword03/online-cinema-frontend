@@ -7,7 +7,7 @@ import { genreService } from '@/services/genre/genre.service';
 
 import { toastError } from '@/utils/error/toast-error';
 
-import { EditGenreInput } from '@/types/edit-genre';
+import { EditGenreInput } from '@/types/edit-types/edit-genre';
 
 import { getAdminUrl } from '@/config/url.config';
 
@@ -46,7 +46,8 @@ export const useEditGenre = (setValues: UseFormSetValue<EditGenreInput>) => {
 	);
 
 	const onSubmit: SubmitHandler<EditGenreInput> = async (body) => {
-		await mutateAsync(body);
+		const newBody = { ...body, name: body.name.trim(), slug: body.slug.trim() };
+		await mutateAsync(newBody);
 	};
 
 	return { onSubmit, isLoading };

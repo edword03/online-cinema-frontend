@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { EditGenreInput } from '@/types/edit-genre';
+import { EditGenreInput } from '@/types/edit-types/edit-genre';
 
 import axiosAuth from '@/api/interceptors';
 import { getGenresUrl } from '@/config/api.config';

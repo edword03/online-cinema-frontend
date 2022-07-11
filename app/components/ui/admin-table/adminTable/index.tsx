@@ -24,8 +24,9 @@ export const AdminTable: FC<TableBodyProps> = ({
 	return (
 		<div>
 			<TableHeader headerItems={headerItems} />
-			{isLoading && <SkeletonLoader count={1} height={48} className="mt-4" />}
-			{tableItems.length > 0 && !isLoading ? (
+			{isLoading ? (
+				<SkeletonLoader count={1} height={48} className="mt-4" />
+			) : tableItems.length > 0 ? (
 				tableItems.map((item) => (
 					<TableItem
 						tableItems={item}

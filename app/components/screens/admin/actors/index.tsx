@@ -10,14 +10,25 @@ import { AdminTable } from '@/ui/admin-table/adminTable';
 import { useActors } from './useActorsList';
 
 export const ActorsList = () => {
-	const { searchTerm, deleteActor, isLoading, handleSearch, data } = useActors();
+	const {
+		searchTerm,
+		deleteActor,
+		isLoading,
+		handleSearch,
+		data,
+		createAsync,
+	} = useActors();
 
 	return (
 		<>
-			<Meta title="Users" />
+			<Meta title="Actors" />
 			<AdminNav />
-			<Heading title="Users" />
-			<AdminHeader searchTerm={searchTerm} onChange={handleSearch} />
+			<Heading title="Actors" />
+			<AdminHeader
+				searchTerm={searchTerm}
+				onChange={handleSearch}
+				onClick={createAsync}
+			/>
 			<AdminTable
 				isLoading={isLoading}
 				headerItems={['Name', 'Count movies']}

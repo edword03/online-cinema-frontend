@@ -16,7 +16,7 @@ import { SlugField } from '@/ui/form-field/SlugField';
 
 import { generateSlug } from '@/utils/string/generateSlug';
 
-import { EditGenreInput } from '@/types/edit-genre';
+import { EditGenreInput } from '@/types/edit-types/edit-genre';
 
 const EditorDynamic = dynamic(() => import('@/ui/form-field/Editor'), {
 	ssr: false,
