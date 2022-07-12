@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import { ChangeEvent, useMemo, useState } from 'react';
 import { useMutation, useQuery } from 'react-query';
 import { toast } from 'react-toastify';
@@ -15,6 +16,7 @@ import { getAdminUrl } from '@/config/url.config';
 
 export const useMovies = () => {
 	const [searchTerm, setSearchTerm] = useState<string>('');
+	const { push } = useRouter();
 
 	const debouncedSearch = useDebounce(searchTerm, 500);
 
@@ -58,13 +60,28 @@ export const useMovies = () => {
 		}
 	);
 
+	const { mutateAsync: crateMovie } = useMutation(
+		'Create movie',
+		() => movieService.create(),
+		{
+			onError: (error) => {
+				toastError(error);
+			},
+			onSuccess: ({ data: _id }) => {
+				toast.success('Movie create was successful');
+				push(getAdminUrl(`movie/edit/${_id}`));
+			},
+		}
+	);
+
 	return useMemo(
 		() => ({
 			handleSearch,
 			deleteMovie,
 			...queryData,
 			searchTerm,
+			crateMovie,
 		}),
-		[queryData, deleteMovie, searchTerm]
+		[deleteMovie, queryData, searchTerm, crateMovie]
 	);
 };
