@@ -2,7 +2,7 @@ import { EditorProps } from 'draft-js';
 import { InputHTMLAttributes } from 'react';
 import { FieldError } from 'react-hook-form';
 
-interface FieldProps {
+export interface FieldProps {
 	placeholder: string;
 	error?: FieldError;
 }

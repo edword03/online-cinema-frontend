@@ -1,8 +1,9 @@
 import type { AppProps } from 'next/app';
 
-import { TypeComponentAuthFields } from '@/types/check-role';
+import '@/assets/styles/globals.scss';
+import '@/assets/styles/react-select.scss';
 
-import '../app/assets/styles/globals.scss';
+import { TypeComponentAuthFields } from '@/types/check-role';
 
 import { MainProvider } from '@/providers/index';
 
