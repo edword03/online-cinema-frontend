@@ -39,3 +39,7 @@ input {
 input:focus {
   box-shadow: none !important;
 }
+
+.admin-form {
+	@apply w-1/2 mt-12;
+}
