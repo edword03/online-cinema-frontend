@@ -1,9 +1,16 @@
 import { FC } from 'react';
-import { MaterialIconsType } from 'types/icons';
+import * as MaterialIcons from 'react-icons/md';
 
-import { MaterialIcons } from '../../types/icons';
+import { useRenderClient } from '@/hooks/useRenderClient';
+
+import { MaterialIconsType } from '@/types/icons';
 
 export const MaterialIcon: FC<{ title: MaterialIconsType }> = ({ title }) => {
+	const { isRenderClient } = useRenderClient();
 	const IconComponent = MaterialIcons[title];
-	return <IconComponent />;
+
+	if (isRenderClient)
+		return <IconComponent /> || <MaterialIcons.MdDragIndicator />;
+
+	return null;
 };

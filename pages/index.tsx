@@ -4,16 +4,19 @@ import { Home } from '@/components/screens/home';
 import { HomeProps } from '@/components/screens/home/home.interface';
 import { Slide } from '@/components/slider/slider.interface';
 
+import { GalleryItemType } from '@/ui/gallery/gallery.interface';
+
+import { actorsService } from '@/services/actors/actors.service';
 import { movieService } from '@/services/movie/movie.service';
 
 import { getGenresList } from '@/utils/movie/getGenreString';
 
-import { getMovieUrl } from '@/config/url.config';
+import { getActorsUrl, getMovieUrl } from '@/config/url.config';
 
-const HomePage: NextPage<HomeProps> = ({ slides }) => {
+const HomePage: NextPage<HomeProps> = ({ slides, actors, trendingMovies }) => {
 	return (
 		<>
-			<Home slides={slides} />
+			<Home slides={slides} trendingMovies={trendingMovies} actors={actors} />
 		</>
 	);
 };
@@ -21,6 +24,8 @@ const HomePage: NextPage<HomeProps> = ({ slides }) => {
 export const getStaticProps: GetStaticProps = async () => {
 	try {
 		const { data } = await movieService.getAllMovies();
+		const { data: actorsData } = await actorsService.getAllActors();
+		const moviesData = await movieService.getMostPopularMovies();
 
 		const slides: Slide[] = data.slice(0, 3).map((movie) => ({
 			_id: movie._id,
@@ -30,15 +35,37 @@ export const getStaticProps: GetStaticProps = async () => {
 			subTitle: getGenresList(movie.genres),
 		}));
 
+		const actors: GalleryItemType[] = actorsData.slice(0, 7).map((actor) => ({
+			name: actor.name,
+			photo: `/${actor.photo}`,
+			link: getActorsUrl(actor.slug),
+			content: {
+				title: actor.name,
+				subtitle: `+${actor.countMovies} movies`,
+			},
+		}));
+
+		const trendingMovies: GalleryItemType[] = moviesData
+			.slice(0, 7)
+			.map((movie) => ({
+				name: movie.title,
+				photo: `/${movie.poster}`,
+				link: getMovieUrl(movie.slug),
+			}));
+
 		return {
 			props: {
 				slides,
+				actors,
+				trendingMovies,
 			},
 		};
 	} catch (e) {
 		return {
 			props: {
 				slides: [],
+				actors: [],
+				trendingMovies: [],
 			},
 		};
 	}
