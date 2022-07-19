@@ -24,6 +24,16 @@ export const movieService = {
 		return movies;
 	},
 
+	async getByActor(actor: string) {
+		return await axios.get<MovieModel[]>(getMoviesUrl(`by-actor/${actor}`));
+	},
+
+	async getByGenres(genreIds: string[]) {
+		return await axios.post<MovieModel[]>(getMoviesUrl(`by-genres`), {
+			genreIds,
+		});
+	},
+
 	async create() {
 		return await axiosAuth.post<string>(getMoviesUrl(''));
 	},

@@ -9,6 +9,6 @@ export interface GalleryItemType {
 	link: string;
 	content?: {
 		title: string;
-		subtitle: string;
+		subtitle?: string;
 	};
 }

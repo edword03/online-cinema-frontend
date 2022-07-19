@@ -11,7 +11,7 @@ import { movieService } from '@/services/movie/movie.service';
 
 import { getGenresList } from '@/utils/movie/getGenreString';
 
-import { getActorsUrl, getMovieUrl } from '@/config/url.config';
+import { getActorUrl, getMovieUrl } from '@/config/url.config';
 
 const HomePage: NextPage<HomeProps> = ({ slides, actors, trendingMovies }) => {
 	return (
@@ -38,7 +38,7 @@ export const getStaticProps: GetStaticProps = async () => {
 		const actors: GalleryItemType[] = actorsData.slice(0, 7).map((actor) => ({
 			name: actor.name,
 			photo: `/${actor.photo}`,
-			link: getActorsUrl(actor.slug),
+			link: getActorUrl(actor.slug),
 			content: {
 				title: actor.name,
 				subtitle: `+${actor.countMovies} movies`,

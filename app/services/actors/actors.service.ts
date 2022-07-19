@@ -16,6 +16,11 @@ export const actorsService = {
 				: {},
 		});
 	},
+
+	async getBySlug(slug: string) {
+		return await axios.get<ActorModel>(getActorsUrl(`by-slug/${slug}`));
+	},
+
 	async getById(_id: string) {
 		return await axiosAuth.get<EditActorInput>(getActorsUrl(_id));
 	},

@@ -25,6 +25,10 @@ export const genreService = {
 		return await axiosAuth.get<EditGenreInput>(getGenresUrl(id));
 	},
 
+	async getBySlug(slug: string) {
+		return await axios.get<GenreModel>(getGenresUrl(`by-slug/${slug}`));
+	},
+
 	async update(id: string, body: EditGenreInput) {
 		return await axiosAuth.put<string>(getGenresUrl(id), body);
 	},
