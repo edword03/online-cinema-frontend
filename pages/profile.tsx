@@ -1,7 +1,9 @@
+import { Profile } from '@/components/screens/profile';
+
 import { NextPageAuth } from '@/types/check-role';
 
 const ProfilePage: NextPageAuth = () => {
-	return <div></div>;
+	return <Profile />;
 };
 
 ProfilePage.isOnlyUser = true;

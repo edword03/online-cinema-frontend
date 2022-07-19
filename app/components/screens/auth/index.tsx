@@ -42,7 +42,6 @@ export const Auth: FC = () => {
 		reset();
 	};
 
-	// @ts-ignore
 	return (
 		<>
 			<Meta title="Sign up" />
