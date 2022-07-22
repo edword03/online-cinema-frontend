@@ -24,6 +24,10 @@ export const movieService = {
 		return movies;
 	},
 
+	async getBySlug(slug: string) {
+		return await axios.get<MovieModel>(getMoviesUrl(`by-slug/${slug}`));
+	},
+
 	async getByActor(actor: string) {
 		return await axios.get<MovieModel[]>(getMoviesUrl(`by-actor/${actor}`));
 	},

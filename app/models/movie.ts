@@ -19,6 +19,6 @@ export interface MovieModel {
 	countViews: number;
 	videoUrl: string;
 	genres: GenreModel[];
-	actors: ActorModel;
+	actors: ActorModel[];
 	isSendTelegram: boolean;
 }
