@@ -24,6 +24,12 @@ export const movieService = {
 		return movies;
 	},
 
+	async updateCountViews(slug: string) {
+		return await axios.put<string>(getMoviesUrl('update-count-views'), {
+			slug,
+		});
+	},
+
 	async getBySlug(slug: string) {
 		return await axios.get<MovieModel>(getMoviesUrl(`by-slug/${slug}`));
 	},

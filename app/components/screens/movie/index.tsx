@@ -2,6 +2,7 @@ import dynamic from 'next/dynamic';
 import React, { FC } from 'react';
 
 import { Meta } from '@/components/SEO/Meta';
+import { useUpdateCountViews } from '@/components/screens/movie/useUpdateCountViews';
 
 import { SubHeading } from '@/ui/Subheading';
 import Banner from '@/ui/banner';
@@ -20,7 +21,13 @@ const VideoPlayer = dynamic(() => import('../../video-player'), {
 	ssr: false,
 });
 
+const RatingMovie = dynamic(() => import('./RateMovie'), {
+	ssr: false,
+});
+
 export const Movie: FC<MovieProps> = ({ movie, similarMovies }) => {
+	useUpdateCountViews(movie.slug);
+
 	return (
 		<>
 			<Meta title={movie.title} />
@@ -36,6 +43,8 @@ export const Movie: FC<MovieProps> = ({ movie, similarMovies }) => {
 				<SubHeading title="Similar movies" />
 				<Gallery items={similarMovies} />
 			</div>
+
+			<RatingMovie slug={movie.slug} id={movie._id} />
 		</>
 	);
 };
