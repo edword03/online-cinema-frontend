@@ -1,6 +1,7 @@
-import { FC } from 'react';
+import React, { FC } from 'react';
 
 import { ContentItem } from '@/components/screens/movie/BannerContent/ContentItem';
+import { FavoriteButton } from '@/components/screens/movie/FavoriteButton';
 
 import { MaterialIcon } from '@/ui/MaterialIcon';
 
@@ -12,6 +13,7 @@ export const BannerContent: FC<{ movie: MovieModel }> = ({ movie }) => {
 	return (
 		<div className={styles.content}>
 			<h1>{movie.title}</h1>
+			<FavoriteButton movieId={movie._id} />
 			<div className={styles.details}>
 				<span>{movie?.parameters?.year} · </span>
 				<span>{movie?.parameters?.country} · </span>

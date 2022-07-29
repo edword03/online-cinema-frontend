@@ -3,6 +3,7 @@ import { ProfileInput } from '@/components/screens/profile/profile.interface';
 import axios from '@/api/interceptors';
 import axiosAuth from '@/api/interceptors';
 import { getUsersUrl } from '@/config/api.config';
+import { MovieModel } from '@/models/movie';
 import { UserModel } from '@/models/user';
 
 export const userService = {
@@ -13,6 +14,16 @@ export const userService = {
 						searchTerm,
 				  }
 				: {},
+		});
+	},
+
+	async getFavoriteMovies() {
+		return axiosAuth.get<MovieModel[]>(getUsersUrl(`profile/favorites`));
+	},
+
+	async toggleFavorite(movieId: string) {
+		return axiosAuth.put(getUsersUrl('profile/favorites'), {
+			movieId,
 		});
 	},
 
