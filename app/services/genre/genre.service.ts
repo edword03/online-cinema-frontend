@@ -17,6 +17,10 @@ export const genreService = {
 		});
 	},
 
+	async getCollections() {
+		return await axios.get(getGenresUrl('collections'));
+	},
+
 	async create() {
 		return await axiosAuth.post<string>(getGenresUrl(''));
 	},
