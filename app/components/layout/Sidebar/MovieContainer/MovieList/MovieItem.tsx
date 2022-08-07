@@ -7,6 +7,7 @@ import { MaterialIcon } from '@/ui/MaterialIcon';
 import { getGenreString } from '@/utils/movie/getGenreString';
 
 import styles from './MovieList.module.scss';
+import { getStaticContentUrl } from '@/config/api.config';
 import { getGenreUrl, getMovieUrl } from '@/config/url.config';
 import { MovieModel } from '@/models/movie';
 
@@ -18,7 +19,7 @@ export const MovieItem: FC<MovieItemProps> = ({ movie }) => {
 			<Link href={getMovieUrl(movie.slug)}>
 				<a>
 					<Image
-						src={`/${movie.poster}`}
+						src={getStaticContentUrl(movie.poster)}
 						width={65}
 						height={97}
 						alt={movie.title}

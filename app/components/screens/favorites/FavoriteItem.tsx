@@ -5,6 +5,7 @@ import { FC } from 'react';
 import { FavoriteButton } from '@/components/screens/movie/FavoriteButton';
 
 import styles from './FavoriteMovies.module.scss';
+import { getStaticContentUrl } from '@/config/api.config';
 import { getMovieUrl } from '@/config/url.config';
 import { MovieModel } from '@/models/movie';
 
@@ -15,7 +16,7 @@ export const FavoriteItem: FC<{ movie: MovieModel }> = ({ movie }) => {
 			<Link href={getMovieUrl(movie._id)}>
 				<a>
 					<Image
-						src={`/${movie.bigPoster}`}
+						src={getStaticContentUrl(movie.bigPoster)}
 						alt={movie.title}
 						layout="fill"
 						draggable={false}

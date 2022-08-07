@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { FC } from 'react';
 
 import styles from './SearchList.module.scss';
+import { getStaticContentUrl } from '@/config/api.config';
 import { getMovieUrl } from '@/config/url.config';
 import { MovieModel } from '@/models/movie';
 
@@ -16,7 +17,7 @@ export const SearchList: FC<SearchListProps> = ({ movies }) => {
 					<Link href={getMovieUrl(slug)} key={_id}>
 						<a>
 							<Image
-								src={`/${poster}`}
+								src={getStaticContentUrl(poster)}
 								alt={title}
 								width={50}
 								height={50}

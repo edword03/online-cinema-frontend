@@ -8,6 +8,7 @@ import { SkeletonLoader } from '@/ui/SkeletonLoader';
 import { useUploads } from '@/hooks/useUploads';
 
 import styles from './form.module.scss';
+import { getStaticContentUrl } from '@/config/api.config';
 
 interface UploadField {
 	folder?: string;
@@ -44,7 +45,12 @@ export const UploadField: FC<UploadField> = ({
 							<SkeletonLoader count={1} className="w-full h-full" />
 						) : (
 							value && (
-								<Image src={`/${value}`} alt="" layout="fill" unoptimized />
+								<Image
+									src={getStaticContentUrl(value)}
+									alt=""
+									layout="fill"
+									unoptimized
+								/>
 							)
 						)}
 					</div>

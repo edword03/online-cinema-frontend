@@ -8,3 +8,5 @@ export const getUsersUrl = (path: string) => getApiEndpoint(`users/${path}`);
 export const getMoviesUrl = (path: string) => getApiEndpoint(`movies/${path}`);
 export const getActorsUrl = (path: string) => getApiEndpoint(`actors/${path}`);
 export const getRatingUrl = (path: string) => getApiEndpoint(`ratings/${path}`);
+export const getStaticContentUrl = (path: string) =>
+	`${process.env.CLOUD_URL}/${process.env.CLOUD_CONTAINER}/${path}`;

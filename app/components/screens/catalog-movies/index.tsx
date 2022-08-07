@@ -8,6 +8,7 @@ import { Heading } from '@/ui/Heading/Heading';
 import { GalleryItem } from '@/ui/gallery/GalleryItem';
 
 import styles from './Catalog.module.scss';
+import { getStaticContentUrl } from '@/config/api.config';
 import { getMovieUrl } from '@/config/url.config';
 
 export const Catalog: FC<CatalogProps> = ({ title, movies, description }) => {
@@ -26,7 +27,7 @@ export const Catalog: FC<CatalogProps> = ({ title, movies, description }) => {
 						item={{
 							name: movie.title,
 							link: getMovieUrl(movie.slug),
-							photo: `/${movie.poster}`,
+							photo: getStaticContentUrl(movie.poster),
 							content: {
 								title: movie.title,
 							},

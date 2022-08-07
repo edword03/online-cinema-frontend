@@ -10,6 +10,7 @@ import { Gallery } from '@/ui/gallery';
 import { GalleryItemType } from '@/ui/gallery/gallery.interface';
 
 import { BannerContent } from './BannerContent/BannerContent';
+import { getStaticContentUrl } from '@/config/api.config';
 import { MovieModel } from '@/models/movie';
 
 interface MovieProps {
@@ -53,7 +54,15 @@ export const Movie: FC<MovieProps> = ({ movie, similarMovies }) => {
 			</Banner>
 
 			<div>
-				<VideoPlayer videoSrc={`/${movie.videoUrl}`} slug={movie.slug} />
+				<VideoPlayer
+					videoSrc={getStaticContentUrl(movie.videoUrl)}
+					slug={movie.slug}
+				/>
+			</div>
+
+			<div className="mt-12">
+				<SubHeading title="Storyline" className="border-b-primary" />
+				<Description text={movie.description} />
 			</div>
 
 			<div className="mt-12">

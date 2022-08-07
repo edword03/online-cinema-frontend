@@ -5,6 +5,7 @@ import { FC } from 'react';
 import { Slide } from '@/components/slider/slider.interface';
 
 import styles from './Slider.module.scss';
+import { getStaticContentUrl } from '@/config/api.config';
 
 interface SlideItemProps {
 	slide: Slide;
@@ -21,7 +22,7 @@ export const SlideItem: FC<SlideItemProps> = ({
 		<div className={styles.slide}>
 			<Image
 				layout="fill"
-				src={slide.bigPoster}
+				src={getStaticContentUrl(slide.bigPoster)}
 				alt={slide.title}
 				className={styles.image}
 				draggable={false}

@@ -34,7 +34,7 @@ const VideoPlayer: FC<VideoPlayerProps> = ({ videoSrc, slug }) => {
 					{videoSrc ? (
 						<>
 							<video
-								src={`//cdp.playfamily.ru/data/storage39/trl/2a305737-848a-4b03-933b-f6d3a2c2ba25.webm`}
+								src={videoSrc}
 								style={{ width: '100%' }}
 								ref={videoRef}
 								className={styles.video}

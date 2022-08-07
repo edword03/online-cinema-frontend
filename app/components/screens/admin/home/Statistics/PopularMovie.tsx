@@ -11,15 +11,12 @@ import { movieService } from '@/services/movie/movie.service';
 
 import styles from '../Admin.module.scss';
 
+import { getStaticContentUrl } from '@/config/api.config';
 import { getMovieUrl } from '@/config/url.config';
 import { MovieModel } from '@/models/movie';
 
 export const PopularMovie = () => {
-	const {
-		data: movie,
-		isLoading,
-		isError,
-	} = useQuery(
+	const { data: movie, isLoading } = useQuery(
 		'most-popular-movie',
 		() => movieService.getMostPopularMovies(),
 		{
@@ -39,7 +36,7 @@ export const PopularMovie = () => {
 							<Image
 								width={285}
 								height={176}
-								src={movie.bigPoster}
+								src={getStaticContentUrl(movie.bigPoster)}
 								alt={movie?.title}
 								className={styles.image}
 								unoptimized

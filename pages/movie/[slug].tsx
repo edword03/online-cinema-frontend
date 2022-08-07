@@ -8,6 +8,7 @@ import { movieService } from '@/services/movie/movie.service';
 
 import Error404 from '../404';
 
+import { getStaticContentUrl } from '@/config/api.config';
 import { getMovieUrl } from '@/config/url.config';
 import { MovieModel } from '@/models/movie';
 
@@ -54,7 +55,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 			.map((movie) => ({
 				name: movie.title,
 				link: getMovieUrl(movie.slug),
-				photo: `/${movie.poster}`,
+				photo: getStaticContentUrl(movie.poster),
 			}));
 
 		console.log(similarMovies);
