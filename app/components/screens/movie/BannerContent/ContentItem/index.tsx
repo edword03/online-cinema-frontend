@@ -11,22 +11,25 @@ interface Link {
 
 interface ContentItemProps {
 	name: string;
-	links: Link[];
+	text?: string;
+	links?: Link[];
 }
 
-export const ContentItem: FC<ContentItemProps> = ({ links, name }) => {
+export const ContentItem: FC<ContentItemProps> = ({ links, name, text }) => {
 	return (
 		<div className={styles.item}>
 			<div className={styles.name}>{name}:</div>
 			<div className={styles.links}>
-				{links.slice(0, 3).map(({ link, _id, title }, index) => (
-					<Fragment key={_id}>
-						<Link href={link}>
-							<a>{title}</a>
-						</Link>
-						{index + 1 !== links.length ? ', ' : ''}
-					</Fragment>
-				))}
+				{links &&
+					links.slice(0, 3).map(({ link, _id, title }, index) => (
+						<Fragment key={_id}>
+							<Link href={link}>
+								<a>{title}</a>
+							</Link>
+							{index + 1 !== links.length ? ', ' : ''}
+						</Fragment>
+					))}
+				{text && text}
 			</div>
 		</div>
 	);
