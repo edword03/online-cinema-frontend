@@ -1,5 +1,5 @@
 import dynamic from 'next/dynamic';
-import React, { FC } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 
 import { Meta } from '@/components/SEO/Meta';
 import { useUpdateCountViews } from '@/components/screens/movie/useUpdateCountViews';
@@ -25,14 +25,31 @@ const RatingMovie = dynamic(() => import('./RateMovie'), {
 	ssr: false,
 });
 
+const Modal = dynamic(() => import('@/ui/modal'), {
+	ssr: false,
+});
+
 export const Movie: FC<MovieProps> = ({ movie, similarMovies }) => {
 	useUpdateCountViews(movie.slug);
+	const [isOpenTrailer, setIsOpenTrailer] = useState(false);
+
+	const handleOpenModal = () => {
+		setIsOpenTrailer(!isOpenTrailer);
+	};
+
+	useEffect(() => {
+		if (isOpenTrailer) document.body.style.overflow = 'hidden';
+
+		return () => {
+			document.body.style.overflow = 'auto';
+		};
+	}, [isOpenTrailer]);
 
 	return (
 		<>
 			<Meta title={movie.title} />
 			<Banner imageSrc={movie.bigPoster}>
-				<BannerContent movie={movie} />
+				<BannerContent movie={movie} onOpenModal={handleOpenModal} />
 			</Banner>
 
 			<div>
@@ -45,6 +62,13 @@ export const Movie: FC<MovieProps> = ({ movie, similarMovies }) => {
 			</div>
 
 			<RatingMovie slug={movie.slug} id={movie._id} />
+			{isOpenTrailer && (
+				<Modal
+					modalHandler={handleOpenModal}
+					video={movie}
+					url={movie.trailerUrl}
+				/>
+			)}
 		</>
 	);
 };
