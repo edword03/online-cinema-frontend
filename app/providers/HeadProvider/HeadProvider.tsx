@@ -18,11 +18,11 @@ export const HeadProvider: FC = () => {
 			<Head>
 				<meta
 					name="viewport"
-					content="width=device-width, initial-scale=1, maximum-scale=1.0"
+					content="width=device-width, initial-scale=1, maximum-scale=7"
 				/>
 
 				<Favicons />
-
+				<link rel="manifest" href="/manifest.json" />
 				<meta name="theme-color" content={themeColor} />
 				<meta name="msapplication-navbutton-color" content={themeColor} />
 				<meta

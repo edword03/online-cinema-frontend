@@ -17,6 +17,7 @@ export const Collections: FC<{ collections: CollectionType[] }> = ({
 			<Meta
 				title="Discovery"
 				description="In this section you will find all genres"
+				isPublic
 			/>
 			<Heading title="Discovery" />
 			<Description text="In this section you will find all genres" />

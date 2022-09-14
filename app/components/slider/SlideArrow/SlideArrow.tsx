@@ -20,6 +20,7 @@ export const SlideArrow: FC<SlideArrowProps> = ({ clickHandler, variant }) => {
 				[styles.left]: isLeft,
 				[styles.right]: !isLeft,
 			})}
+			aria-label={isLeft ? 'swipe to left slide' : 'swipe to right slide'}
 		>
 			<MaterialIcon title={isLeft ? 'MdChevronLeft' : 'MdChevronRight'} />
 		</button>

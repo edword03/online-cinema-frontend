@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useMutation, useQuery } from 'react-query';
 
+import { useAuth } from '@/hooks/useAuth';
+
 import { ratingService } from '@/services/rating/rating.service';
 
 import { toastError } from '@/utils/error/toast-error';
@@ -8,6 +10,7 @@ import { toastError } from '@/utils/error/toast-error';
 export const useRateMovie = (movieId: string) => {
 	const [rating, setRating] = useState<number>(0);
 	const [isSent, setIsSent] = useState<boolean>(false);
+	const { user } = useAuth();
 
 	const { refetch } = useQuery(
 		['user rating movie', movieId],
@@ -16,7 +19,7 @@ export const useRateMovie = (movieId: string) => {
 			onSuccess({ data }) {
 				setRating(data);
 			},
-			enabled: !!movieId,
+			enabled: !!movieId && !!user,
 		}
 	);
 

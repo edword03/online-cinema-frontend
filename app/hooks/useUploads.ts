@@ -22,7 +22,7 @@ export const useUploads: TypeUpload = (onChange, folder) => {
 		(data: any) => fileService.upload(data, folder),
 		{
 			onSuccess({ data }) {
-				onChange(data[0].url);
+				onChange(data.url);
 			},
 			onError(error) {
 				toastError(error);

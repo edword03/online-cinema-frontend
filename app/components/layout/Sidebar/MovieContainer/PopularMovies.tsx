@@ -8,8 +8,12 @@ import { SkeletonLoader } from '@/ui/SkeletonLoader';
 import { movieService } from '@/services/movie/movie.service';
 
 export const PopularMovies = () => {
-	const { isLoading, data, isError } = useQuery('Popular movies-sidebar', () =>
-		movieService.getMostPopularMovies()
+	const { isLoading, data, isError } = useQuery(
+		'Popular movies-sidebar',
+		() => movieService.getMostPopularMovies(),
+		{
+			select: (data) => data.slice(0, 4),
+		}
 	);
 
 	if (isLoading)

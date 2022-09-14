@@ -14,7 +14,7 @@ import { getMovieUrl } from '@/config/url.config';
 export const Catalog: FC<CatalogProps> = ({ title, movies, description }) => {
 	return (
 		<>
-			<Meta title={title} />
+			<Meta title={title} isPublic description={description} />
 			<Heading title={title} />
 			{description && (
 				<Description text={description} className={styles.description} />

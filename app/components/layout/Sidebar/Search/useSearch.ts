@@ -3,11 +3,11 @@ import { useQuery } from 'react-query';
 
 import { useDebounce } from '@/hooks/useDebounce';
 
-import { genreService } from '@/services/genre/genre.service';
 import { movieService } from '@/services/movie/movie.service';
 
 export const useSearch = () => {
 	const [searchTerm, setSearchTerm] = useState<string>('');
+	const [isVisible, setIsVisible] = useState(false);
 	const debouncedSearch = useDebounce(searchTerm, 500);
 
 	const { isSuccess, isLoading, data } = useQuery(
@@ -16,6 +16,9 @@ export const useSearch = () => {
 		{
 			select: (data) => data.data,
 			enabled: !!debouncedSearch,
+			onSuccess() {
+				setIsVisible(true);
+			},
 		}
 	);
 
@@ -23,5 +26,9 @@ export const useSearch = () => {
 		setSearchTerm(event.target.value);
 	};
 
-	return { onChange, isSuccess, isLoading, data, searchTerm };
+	const onClose = () => {
+		setIsVisible(false);
+	};
+
+	return { onChange, data, searchTerm, isVisible, onClose };
 };

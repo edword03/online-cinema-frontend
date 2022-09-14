@@ -28,7 +28,7 @@ export const getStaticProps: GetStaticProps = async () => {
 		const { data: actorsData } = await actorsService.getAllActors();
 		const moviesData = await movieService.getMostPopularMovies();
 
-		const slides: Slide[] = data.slice(0, 3).map((movie) => ({
+		const slides: Slide[] = data.slice(0, 6).map((movie) => ({
 			_id: movie._id,
 			title: movie.title,
 			bigPoster: movie.bigPoster,
@@ -60,6 +60,7 @@ export const getStaticProps: GetStaticProps = async () => {
 				actors,
 				trendingMovies,
 			},
+			revalidate: 60,
 		};
 	} catch (e) {
 		return {

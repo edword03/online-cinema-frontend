@@ -9,7 +9,7 @@ body {
 	padding: 0;
 	margin: 0;
 	font-family: 'Outfit', sans-serif;
-
+	-webkit-overflow-scrolling: touch;
 	@apply bg-gray-900;
 }
 
