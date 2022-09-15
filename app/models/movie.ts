@@ -17,6 +17,8 @@ export interface MovieModel {
 	parameters?: Parameters;
 	rating?: number;
 	countViews: number;
+	trailerUrl: string;
+	tagline: string;
 	videoUrl: string;
 	genres: GenreModel[];
 	actors: ActorModel[];

@@ -9,6 +9,7 @@ import { toastError } from '@/utils/error/toast-error';
 
 export const useRateMovie = (movieId: string) => {
 	const [rating, setRating] = useState<number>(0);
+	const [oldValue, setOldValue] = useState(0);
 	const [isSent, setIsSent] = useState<boolean>(false);
 	const { user } = useAuth();
 
@@ -18,6 +19,7 @@ export const useRateMovie = (movieId: string) => {
 		{
 			onSuccess({ data }) {
 				setRating(data);
+				setOldValue(data);
 			},
 			enabled: !!movieId && !!user,
 		}

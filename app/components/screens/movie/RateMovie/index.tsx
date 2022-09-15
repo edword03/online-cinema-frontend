@@ -29,6 +29,7 @@ const RateMovie: FC<RateMovieProps> = ({ id, slug }) => {
 						<div className={styles.thanks}>Thanks for rating!</div>
 					) : (
 						<StarRating
+							starCount={10}
 							name="star rating"
 							value={rating}
 							onStarClick={handleRating}

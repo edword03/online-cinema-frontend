@@ -1,24 +1,34 @@
 import React, { FC } from 'react';
 
-import { ContentItem } from '@/components/screens/movie/BannerContent/ContentItem';
-import { FavoriteButton } from '@/components/screens/movie/FavoriteButton';
-
 import { MaterialIcon } from '@/ui/MaterialIcon';
+import { Button } from '@/ui/form-field/Button';
+
+import { FavoriteButton } from '../FavoriteButton';
 
 import styles from './BannerContent.module.scss';
+import { ContentItem } from './ContentItem';
 import { getActorUrl, getGenreUrl } from '@/config/url.config';
 import { MovieModel } from '@/models/movie';
 
-export const BannerContent: FC<{ movie: MovieModel }> = ({ movie }) => {
+interface BannerContentProps {
+	movie: MovieModel;
+	onOpenModal: () => void;
+}
+
+export const BannerContent: FC<BannerContentProps> = ({
+	movie,
+	onOpenModal,
+}) => {
 	return (
 		<div className={styles.content}>
 			<h1>{movie.title}</h1>
-			<FavoriteButton movieId={movie._id} />
+			<FavoriteButton movieId={movie._id} slug={movie.slug} />
 			<div className={styles.details}>
 				<span>{movie?.parameters?.year} · </span>
 				<span>{movie?.parameters?.country} · </span>
-				<span>{movie?.parameters?.duration} min.</span>
+				<span>{movie?.parameters?.duration} min</span>
 			</div>
+			<ContentItem name="Tagline" text={movie.tagline} />
 			<ContentItem
 				name="Genres"
 				links={movie.genres.map((genre) => ({
@@ -35,6 +45,9 @@ export const BannerContent: FC<{ movie: MovieModel }> = ({ movie }) => {
 					_id: actor._id,
 				}))}
 			/>
+			<Button className="mt-10" onClick={onOpenModal}>
+				Watch Trailer
+			</Button>
 
 			<div className={styles.rating}>
 				<MaterialIcon title="MdStarRate" />

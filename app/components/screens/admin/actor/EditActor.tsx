@@ -57,7 +57,6 @@ export const EditActor = () => {
 							<SlugField register={register} generate={generateSlugValue} />
 							<Controller
 								control={control}
-								defaultValue=""
 								name="photo"
 								render={({
 									field: { value, onChange },

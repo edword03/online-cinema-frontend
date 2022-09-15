@@ -1,6 +1,7 @@
 import dynamic from 'next/dynamic';
 import { MouseEvent } from 'react';
 import { Controller, useForm } from 'react-hook-form';
+import { stripHtml } from 'string-strip-html';
 
 import { Meta } from '@/components/SEO/Meta';
 import styles from '@/components/shared/admin/adminForm.module.scss';
@@ -22,6 +23,10 @@ import { useAdminGenres } from './useAdminGenres';
 import { useEditMovie } from './useEditMovie';
 
 const DynamicSelect = dynamic(() => import('@/ui/select'), {
+	ssr: false,
+});
+
+const Editor = dynamic(() => import('@/ui/form-field/Editor'), {
 	ssr: false,
 });
 
@@ -64,6 +69,14 @@ export const EditMovie = () => {
 							/>
 							<SlugField register={register} generate={generateSlugValue} />
 							<Field
+								{...register('tagline', {
+									required: 'Tagline is required!',
+								})}
+								placeholder="Tagline"
+								error={errors.trailerUrl}
+								style={{ width: '31%' }}
+							/>
+							<Field
 								{...register('parameters.country', {
 									required: 'Country is required!',
 								})}
@@ -85,6 +98,15 @@ export const EditMovie = () => {
 								})}
 								placeholder="Year"
 								error={errors.parameters?.year}
+								style={{ width: '31%' }}
+							/>
+
+							<Field
+								{...register('trailerUrl', {
+									required: 'Trailer is required!',
+								})}
+								placeholder="Trailer URL"
+								error={errors.trailerUrl}
 								style={{ width: '31%' }}
 							/>
 
@@ -185,6 +207,31 @@ export const EditMovie = () => {
 										isNoImage
 									/>
 								)}
+							/>
+						</div>
+						<div>
+							<Controller
+								control={control}
+								name="description"
+								defaultValue=""
+								render={({
+									field: { value, onChange },
+									fieldState: { error },
+								}) => (
+									<Editor
+										onChange={onChange}
+										value={value}
+										placeholder="Description"
+										error={error}
+									/>
+								)}
+								rules={{
+									validate: {
+										required: (value) =>
+											(value && stripHtml(value).result.length > 0) ||
+											'Description required',
+									},
+								}}
 							/>
 						</div>
 						<Button>Update</Button>

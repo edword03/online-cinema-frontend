@@ -16,11 +16,15 @@ import { SlugField } from '@/ui/form-field/SlugField';
 
 import { generateSlug } from '@/utils/string/generateSlug';
 
+import { iconsList } from '@/constants/iconsList';
+
 import { EditGenreInput } from '@/types/edit-types/edit-genre';
 
 const EditorDynamic = dynamic(() => import('@/ui/form-field/Editor'), {
 	ssr: false,
 });
+
+const DynamicSelect = dynamic(() => import('@/ui/select'));
 
 export const EditGenre: FC = () => {
 	const {
@@ -67,13 +71,20 @@ export const EditGenre: FC = () => {
 									error={errors.slug}
 								/>
 							</div>
-							<Field
-								{...register('icon', {
-									required: 'Icon is required',
-								})}
-								placeholder="Icon"
-								error={errors.icon}
-								style={{ width: '31%' }}
+							<Controller
+								control={control}
+								name="icon"
+								rules={{ required: 'Icon is required' }}
+								render={({ field, fieldState: { error } }) => (
+									<div style={{ width: '32%' }}>
+										<DynamicSelect
+											error={error}
+											field={field}
+											placeholder="Icons"
+											options={iconsList || []}
+										/>
+									</div>
+								)}
 							/>
 						</div>
 

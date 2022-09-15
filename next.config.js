@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+module.exports = {
 	optimizeFonts: true,
 	poweredByHeader: false,
 	env: {
@@ -22,5 +22,3 @@ const nextConfig = {
 		];
 	},
 };
-
-module.exports = nextConfig;

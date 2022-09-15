@@ -4,6 +4,7 @@ import React, { FC, useEffect, useState } from 'react';
 import { Meta } from '@/components/SEO/Meta';
 import { useUpdateCountViews } from '@/components/screens/movie/useUpdateCountViews';
 
+import { Description } from '@/ui/Heading/Description';
 import { SubHeading } from '@/ui/Subheading';
 import Banner from '@/ui/banner';
 import { Gallery } from '@/ui/gallery';

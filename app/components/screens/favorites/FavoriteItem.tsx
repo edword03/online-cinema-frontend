@@ -12,7 +12,7 @@ import { MovieModel } from '@/models/movie';
 export const FavoriteItem: FC<{ movie: MovieModel }> = ({ movie }) => {
 	return (
 		<div className={styles.itemWrapper}>
-			<FavoriteButton movieId={movie._id} />
+			<FavoriteButton movieId={movie._id} slug={movie.slug} />
 			<Link href={getMovieUrl(movie._id)}>
 				<a>
 					<Image
