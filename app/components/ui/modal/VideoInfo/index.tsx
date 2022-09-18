@@ -25,7 +25,6 @@ interface VideoInfoProps {
 }
 
 export const VideoInfo: FC<VideoInfoProps> = ({ videoInfo }) => {
-	console.log(videoInfo.genres);
 	return (
 		<div className={styles.videoInfo}>
 			<div className={styles.poster}>

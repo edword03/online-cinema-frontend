@@ -58,8 +58,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 				photo: getStaticContentUrl(movie.poster),
 			}));
 
-		console.log(similarMovies);
-
 		return {
 			props: {
 				movie,

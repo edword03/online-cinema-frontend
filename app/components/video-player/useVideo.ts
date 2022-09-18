@@ -81,7 +81,6 @@ export const useVideo = () => {
 
 		if (progressBar?.getBoundingClientRect && progressBar.parentNode) {
 			box = progressBar.getBoundingClientRect();
-			console.log(box);
 		}
 
 		if (!box) return;
@@ -94,8 +93,6 @@ export const useVideo = () => {
 
 		const clientTop = documentElement.clientTop || body.clientTop || 0;
 		const scrollTop = window.pageYOffset || body.scrollTop;
-
-		console.log(event.pageX);
 	};
 
 	useEffect(() => {
