@@ -16,10 +16,7 @@ export const HeadProvider: FC = () => {
 				height={3}
 			/>
 			<Head>
-				<meta
-					name="viewport"
-					content="width=device-width, initial-scale=1, maximum-scale=7"
-				/>
+				<meta name="viewport" content="width=1300px" />
 
 				<Favicons />
 				<link rel="manifest" href="/manifest.json" />
