@@ -21,4 +21,9 @@ module.exports = {
 			},
 		];
 	},
+
+	sassOptions: {
+		includePaths: ['./src/app/assets/styles/helpers'],
+		prependData: `@import "~@/assets/styles/helpers/styles.scss";`,
+	},
 };
