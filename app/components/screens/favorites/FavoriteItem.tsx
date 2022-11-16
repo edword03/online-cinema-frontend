@@ -13,7 +13,7 @@ export const FavoriteItem: FC<{ movie: MovieModel }> = ({ movie }) => {
 	return (
 		<div className={styles.itemWrapper}>
 			<FavoriteButton movieId={movie._id} slug={movie.slug} />
-			<Link href={getMovieUrl(movie._id)}>
+			<Link href={getMovieUrl(movie.slug)}>
 				<a>
 					<Image
 						src={getStaticContentUrl(movie.bigPoster)}
